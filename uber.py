@@ -2,4 +2,21 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 
-st.title('uber pickaps in new york city')
+st.title('uber pickaps in NYC')
+
+DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
+           'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
+
+DATE_COLUMN = date/time
+
+def load_data(nrows):
+		data = pd.read_csv(DATA_URL,nrows = nrows)
+		lowercase = lambda x: str(x).lower()
+		data.rename(lowercase, axis="columns", inplace = True)
+		data[DATE_COLUMN] = pd.to_datetime([DATE_COLUMN])
+		return data
+		
+data_load_state = st.text("Loading data...")
+data = load_date(10000)
+data_load_state = st.text("Loading data...Done!")
+           
